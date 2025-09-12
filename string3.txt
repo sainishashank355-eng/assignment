@@ -1,0 +1,41 @@
+package java1;
+import java.util.*;
+public class stringlevel1{
+public static void main(String[] args) {
+    Scanner os = new Scanner(System.in);
+
+    System.out.print("Enter the original string: ");
+    String original = os.nextLine();
+
+    System.out.print("Enter the start index : ");
+    int start = os.nextInt();
+
+    System.out.print("Enter the end index : ");
+    int end = os.nextInt();
+
+
+    String manualSubstring = "";
+    for (int i = start; i < end && i < original.length(); i++) {
+        manualSubstring += original.charAt(i);
+    }
+
+        String builtInSubstring = "";
+    if (start >= 0 && end <= original.length() && start < end) {
+        builtInSubstring = original.substring(start, end);
+    } else {
+        System.out.println("Invalid start or end indices for substring().");
+    }
+
+     System.out.println("Manual Substring using charAt(): " + manualSubstring);
+    System.out.println("Built-in Substring using substring(): " + builtInSubstring);
+
+    
+    if (manualSubstring.equals(builtInSubstring)) {
+        System.out.println("The substrings are equal.");
+    } else {
+        System.out.println(" The substrings are NOT equal.");
+    }
+
+
+}
+}

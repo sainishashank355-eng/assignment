@@ -1,0 +1,23 @@
+package java1;
+
+import java.util.Scanner;
+
+public class kuch_bhi {
+	public static void main(String[] args) {
+		Scanner os= new Scanner(System.in);
+	    System.out.println("Enter A Number for length of array");
+		int n=os.nextInt();	
+		int c=0;
+		int i;
+	
+		int[] arr= new int[n];
+		 System.out.println("Enter Numbers for array");
+		for(i=0;i<n;i++) {
+			 arr[i]=os.nextInt();
+		if(arr[i]%2==0 && arr[i]%3==0) {
+			c++;
+		}
+	}
+		System.out.println(c);
+}
+}

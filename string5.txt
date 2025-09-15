@@ -1,0 +1,21 @@
+package java1;
+import java.util.*;
+
+public class string1level4 {
+
+	public static void main(String[] args) {
+	Scanner os = new Scanner(System.in);
+	System.out.println("Enter String");
+	String org=os.next().trim();
+	System.out.println("Enter String index");
+      int n=os.nextInt();
+      int i;
+     if (n<=(org.length()-1)) {
+    	 System.out.println("Your Input index string ="+org.charAt(n));
+     }
+     else {
+    	 System.out.println("Your Input index is  StringIndexOutOfBoundsException "+n);
+     }
+	}
+
+}

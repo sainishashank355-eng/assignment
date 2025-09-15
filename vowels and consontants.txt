@@ -1,0 +1,49 @@
+package java1;
+
+import java.util.Scanner;
+
+public class vowelsandconsonats {
+	
+	
+		public static void main(String[] args) {
+			Scanner os= new Scanner(System.in);
+		    System.out.println("Enter a character to check wether it is a vowel or consonats");
+			char c=os.next().charAt(0);
+		    switch(c){
+		    		case 'a':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'A': 
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'e':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'E':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'i':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'I':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'o':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'O':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'u':
+			    		System.out.print("Vowels");
+			    		break;
+		    		case 'U':
+			    		System.out.print("Vowels");
+			    		break;
+		    		default :
+			    		System.out.println("Consonats");
+			    		break;
+		    }
+
+	}
+	}

@@ -1,0 +1,11 @@
+package java1;
+import java.util.Scanner;
+public class string1level5{
+public static void main(String[] args) {
+    Scanner os = new Scanner(System.in);
+
+    System.out.print("Enter string: ");
+    String org = os.nextLine();
+    System.out.println(org.toUpperCase());
+}
+}

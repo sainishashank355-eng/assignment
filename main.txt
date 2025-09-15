@@ -1,0 +1,162 @@
+package java1;
+
+import java.util.*;
+
+public class Mainprogram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Choose Program:");
+        System.out.println("1. Palindrome Check");
+        System.out.println("2. Anagram Check");
+        System.out.println("3. Calendar Generator");
+        System.out.println("4. Deck of Cards");
+        int choice = sc.nextInt();
+        sc.nextLine(); 
+        
+        if (choice == 1) {
+            System.out.print("Enter text: ");
+            String text = sc.nextLine().replaceAll("\\s+", "").toLowerCase();
+
+             boolean isPal1 = true;
+            int start = 0, end = text.length() - 1;
+            while (start < end) {
+                if (text.charAt(start) != text.charAt(end)) {
+                    isPal1 = false;
+                    break;
+                }
+                start++;
+                end--;
+            }
+
+       
+            boolean isPal2 = true;
+            start = 0; end = text.length() - 1;
+            while (true) {
+                if (start >= end) break;
+                if (text.charAt(start) != text.charAt(end)) {
+                    isPal2 = false;
+                    break;
+                }
+                start++;
+                end--;
+            }
+
+       
+            String rev = "";
+           for (int i = text.length() - 1; i >= 0; i--) {
+                rev += text.charAt(i);
+            }
+            boolean isPal3 = text.equals(rev);
+
+            System.out.println("Logic 1: " + (isPal1 ? "Palindrome" : "Not Palindrome"));
+            System.out.println("Logic 2: " + (isPal2 ? "Palindrome" : "Not Palindrome"));
+            System.out.println("Logic 3: " + (isPal3 ? "Palindrome" : "Not Palindrome"));
+        }
+
+       
+        else if (choice == 2) {
+            System.out.print("Enter first text: ");
+            String text1 = sc.nextLine().replaceAll("\\s+", "").toLowerCase();
+            System.out.print("Enter second text: ");
+            String text2 = sc.nextLine().replaceAll("\\s+", "").toLowerCase();
+
+            if (text1.length() != text2.length()) {
+                System.out.println("Not Anagrams");
+            } else {
+                int[] freq = new int[26];
+                for (char c : text1.toCharArray()) freq[c - 'a']++;
+                for (char c : text2.toCharArray()) freq[c - 'a']--;
+
+                boolean isAnagram = true;
+                for (int val : freq) {
+                    if (val != 0) {
+                        isAnagram = false;
+                        break;
+                    }
+                }
+                System.out.println(isAnagram ? "Anagrams" : "Not Anagrams");
+            }
+        }
+
+       
+        else if (choice == 3) {
+            System.out.print("Enter month (1-12): ");
+            int m = sc.nextInt();
+            System.out.print("Enter year: ");
+            int y = sc.nextInt();
+
+            String[] months = {"", "January", "February", "March", "April", "May", "June", "July",
+                    "August", "September", "October", "November", "December"};
+            int[] days = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+         
+            if (m == 2 && ((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))) {
+                days[2] = 29;
+            }
+
+            System.out.println("\n   " + months[m] + " " + y);
+            System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
+
+           
+            int d = 1;
+            int y0 = y - (14 - m) / 12;
+            int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+            int m0 = m + 12 * ((14 - m) / 12) - 2;
+            int d0 = (d + x + (31 * m0) / 12) % 7;
+
+           
+            for (int i = 0; i < d0; i++) System.out.print("    ");
+         
+            for (int i = 1; i <= days[m]; i++) {
+                System.out.printf("%4d", i);
+                if ((i + d0) % 7 == 0) System.out.println();
+            }
+        }
+
+        
+        else if (choice == 4) {
+            String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
+            String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10",
+                    "Jack", "Queen", "King", "Ace"};
+
+            int n = suits.length * ranks.length;
+            String[] deck = new String[n];
+            int k = 0;
+            for (String s : suits) {
+                for (String r : ranks) {
+                    deck[k++] = r + " of " + s;
+                }
+            }
+
+            
+            for (int i = 0; i < deck.length; i++) {
+                int rand = i + (int) (Math.random() * (deck.length - i));
+                String temp = deck[i];
+                deck[i] = deck[rand];
+                deck[rand] = temp;
+            }
+
+            System.out.print("Enter number of players: ");
+            int players = sc.nextInt();
+            System.out.print("Enter number of cards per player: ");
+            int cards = sc.nextInt();
+
+            if (players * cards > n) {
+                System.out.println("Not enough cards!");
+            } else {
+                for (int i = 0; i < players; i++) {
+                    System.out.println("Player " + (i + 1) + ":");
+                    for (int j = 0; j < cards; j++) {
+                        System.out.println("  " + deck[i * cards + j]);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+
+        else {
+            System.out.println("Invalid choice!");
+        }
+    }
+}

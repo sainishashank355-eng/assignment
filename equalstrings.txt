@@ -1,0 +1,42 @@
+package java1;
+
+import java.util.Scanner;
+
+public class fourth {
+	public static void main(String[] args) {
+		Scanner os= new Scanner(System.in);
+		System.out.println("Enter two Strings");
+		String a=os.next().trim();
+		String b=os.next().trim();
+		int i=0;
+		int j=0;
+		int c=0;
+		int u=0;
+		int y=0;
+		for(i=0;i<a.length();i++) {
+			for(j=0;j<b.length();j++) {
+				if(a.charAt(i)==b.charAt(j)) {
+				c++;	
+				}
+			}
+	}
+		if(c==a.length() || c==b.length()) {
+			u++;
+			System.out.println("Entered two Strings equal");
+		}
+			else {
+				System.out.println("Entered two not Strings equal");
+			}
+		
+		if(a.equals(b)) {
+			y++;
+			System.out.println("Entered two Strings equal by inbuilt functions");
+		}
+		else {
+				System.out.println("Entered two not Strings equal by in built functions");
+			}
+		if(u==y) {
+			System.out.println("RESULT SAME");
+		}
+  }
+}
